@@ -11,6 +11,15 @@
   </head>
   <body>
       <div class="container">
+        {% if user.is_authenticated %}
+          <h5>Hello, {{ user.username }}!</h5>
+          <p><a href="{% url 'logout' %}">logout</a></p>
+        {% else %}
+          <p><a href="{% url 'login' %}">login</a></p>
+          <p><a href="{% url 'register' %}">register</a></p>
+        {% endif %}
+
+          <h2><a href="{% url 'index' %}">ecommerce</a> - {{ page_name }}</h2>
           {% block content %}{% endblock content %}
       </div>
     <!-- Optional JavaScript -->
