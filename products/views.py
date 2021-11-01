@@ -3,6 +3,7 @@ from .models import Product
 
 
 def index(request):
+    """Página inicial com todos os produtos"""
     products = Product.objects.all()
     page_name = 'Página inicial'
     context = {'page_name': page_name, 'products': products}
@@ -10,7 +11,13 @@ def index(request):
 
 
 def product(request, product_id):
+    """Página do produto"""
     product_info = Product.objects.get(id=product_id)
     page_name = 'Produto'
     context = {'page_name': page_name, 'info': product_info}
     return render(request, 'products/product.html', context)
+
+
+def myproducts(request):
+    """Refere-se ao chamado 'carrinho'"""
+    pass

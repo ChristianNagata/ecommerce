@@ -4,4 +4,7 @@
 <h2>{{ info.name }}</h2>
 <h3>R${{ info.price }}</h3>
 
+<a href="{% url 'index' %}"><button class="btn btn-outline-primary">Comprar</button></a>
+<a href="{% url 'index' %}"><button class="btn btn-outline-primary">Adicionar ao carrinho</button></a>
+
 {% endblock content %}

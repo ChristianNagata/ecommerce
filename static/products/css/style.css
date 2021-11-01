@@ -1,0 +1,9 @@
+.card-largura {
+    max-width: 18rem;
+}
+
+.imagem-carrossel {
+    object-fit: cover;
+    object-position: 0 75%;
+    height: 500px;
+}
