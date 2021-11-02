@@ -7,3 +7,21 @@
     object-position: 0 75%;
     height: 500px;
 }
+
+.card-posicao-imagem1 {
+    object-fit: cover;
+    object-position: 0 35%;
+    height: 300px;
+}
+
+.card-posicao-imagem2 {
+    object-fit: cover;
+    object-position: 0 55%;
+    height: 300px;
+}
+
+.card-posicao-imagem3 {
+    object-fit: cover;
+    object-position: 0 55%;
+    height: 300px;
+}
