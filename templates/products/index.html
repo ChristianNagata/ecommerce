@@ -54,14 +54,14 @@
   </div>
   
   <div class="card card-largura card-estilo mt-5 p-0 m-4 col-12 col-md-3 shadow rounded">
-    <a href=""><img src="{% static 'products/img/imagem2-card.jpg' %}" class="card-img-top card-posicao-imagem2"></a>
+    <a href=""><img src="{% static 'products/img/imagem2-card.jpg' %}" class="card-img-top card-posicao-imagem1"></a>
     <div class="card-body">
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
   </div>
 
   <div class="card card-largura card-estilo mt-5 p-0 m-4 col-12 col-md-3 shadow rounded">
-    <a href=""><img src="{% static 'products/img/imagem3-card.jpg' %}" class="card-img-top card-posicao-imagem3"></a>
+    <a href=""><img src="{% static 'products/img/imagem3-card.jpg' %}" class="card-img-top card-posicao-imagem1"></a>
     <div class="card-body">
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
@@ -70,20 +70,3 @@
 </div>
 <!-- Categorias fim -->
 {% endblock header %}
-
-{% block content %}
-<!-- Cards começo -->
-<div class="row justify-content-center">
-  {% for product in products %}
-    <div class="card card-largura p-0 m-4 col-12 col-md-4">
-      <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.price }}</p>
-            <a href="{% url 'product' product.id %}" class="btn btn-primary">Go somewhere</a>
-          </div>
-    </div>
-  {% endfor %}
-</div>  
-<!-- Cards final -->
-{% endblock content %}

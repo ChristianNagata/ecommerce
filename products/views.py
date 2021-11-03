@@ -4,10 +4,17 @@ from .models import Product
 
 def index(request):
     """Página inicial com todos os produtos"""
-    products = Product.objects.all()
     page_name = 'Página inicial'
-    context = {'page_name': page_name, 'products': products}
+    context = {'page_name': page_name}
     return render(request, 'products/index.html', context)
+
+
+def products(request):
+    """Todos os produtos"""
+    products = Product.objects.all()
+    page_name = 'Todos os produtos'
+    context = {'page_name': page_name, 'products': products}
+    return render(request, 'products/products.html', context)
 
 
 def product(request, product_id):
