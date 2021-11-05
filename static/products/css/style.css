@@ -18,3 +18,37 @@
 .card-produto-largura {
     max-width: 13rem;
 }
+
+/* Mais usado na página do produto */
+.posicao-imagem {
+    object-fit: cover;
+    object-position: left top;
+    height: 450px;
+    width: 450px;
+}
+
+.posicao-imagem2 {
+    object-fit: cover;
+    object-position: 0 35%;
+    height: 150px;
+}
+
+/* usado na página do produto */
+
+.posicao-imagem-zoom {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* usado no modal do produto */
+
+.link-personalizado {
+    text-decoration: none;
+    color: inherit;
+}
+
+.link-personalizado:hover {
+    text-decoration: skyblue;
+}

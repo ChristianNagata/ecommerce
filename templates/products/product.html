@@ -1,10 +1,93 @@
 {% extends 'base.html' %}
+{% load static %}
+
+
 {% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="card mt-4 bg-light">
+      <div class="row no-gutters">
+        <div class="col-md-5">
+          <a href="" data-toggle="modal" data-target="#image-zoom"><img src="{{ info.image.url }}" class="posicao-imagem m-2"></a>
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <h4 class="card-title">{{ info.name }}</h4>
+            <h5 class="card-title">$ {{ info.price|stringformat:".2f" }}</h5>
+            <div class="pt-5">
+              <a href="#" class="btn btn-primary">Buy now</a>
+              <a href="#" class="btn btn-secondary">Add to cart</a>
+              <p class="card-text pt-5">{{ info.details }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mt-4">
+      <div class="col-6">
+        <div class="card bg-light h-100">
+          <div class="card-body">
+            <h5 class="card-title">Product details</h5>
+            <p class="card-text">{{ info.details }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Other products</h5>
+            <div class="card-group">
+              <div class="card">
+                <img src="{{ info.image.url }}" class="card-img-top posicao-imagem2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                </div>
+              </div>
+              <div class="card">
+                <img src="{{ info.image.url }}" class="card-img-top posicao-imagem2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                </div>
+              </div>
+              <div class="card">
+                <img src="{{ info.image.url }}" class="card-img-top posicao-imagem2" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<h2>{{ info.name }}</h2>
-<h3>R${{ info.price }}</h3>
+      <div class="col-12 mt-4">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title">Comments</h5>
+            <p class="card-text text-center">This product does not have any comment yet</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<a href="{% url 'index' %}"><button class="btn btn-outline-primary">Comprar</button></a>
-<a href="{% url 'index' %}"><button class="btn btn-outline-primary">Adicionar ao carrinho</button></a>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="image-zoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <dialog class="modal-content">
+      <header class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </header>
+      <main class="modal-body">
+        <img src="{{ info.image.url }}" class="posicao-imagem-zoom">
+      </main>
+    </dialog>
+  </div>
+</div>
 
 {% endblock content %}
