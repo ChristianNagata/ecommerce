@@ -1,3 +1,4 @@
+from typing import ContextManager
 from django.shortcuts import render
 from .models import Product
 
@@ -20,9 +21,20 @@ def products(request):
 def product(request, product_id):
     """Página do produto"""
     product_info = Product.objects.get(id=product_id)
+
+    if request.method != 'POST':
+        pass
+    else:
+        pass
     page_name = 'Produto'
     context = {'page_name': page_name, 'info': product_info}
     return render(request, 'products/product.html', context)
+
+
+def subtotal(request):
+    """Página de resumo da compra"""
+    context = {'title': 'Página de resumo'}
+    return render(request, 'products/subtotal.html', context)
 
 
 def myproducts(request):

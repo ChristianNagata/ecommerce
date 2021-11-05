@@ -52,3 +52,7 @@
 .link-personalizado:hover {
     text-decoration: skyblue;
 }
+
+.botao-personalizado {
+    width: 44px;
+}

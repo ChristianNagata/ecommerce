@@ -14,11 +14,23 @@
           <div class="card-body">
             <h4 class="card-title">{{ info.name }}</h4>
             <h5 class="card-title">$ {{ info.price|stringformat:".2f" }}</h5>
-            <div class="pt-5">
-              <a href="#" class="btn btn-primary">Buy now</a>
-              <a href="#" class="btn btn-secondary">Add to cart</a>
-              <p class="card-text pt-5">{{ info.details }}</p>
+
+            <div class="pt-5" role="group" aria-label="Basic example">
+              <form method="post" action="{% url 'subtotal' %}" class="form">
+                <!-- Tamanhos -->
+                <button type="button" class="btn btn-outline-dark botao-personalizado">S</button>
+                <button type="button" class="btn btn-outline-dark botao-personalizado">M</button>
+                <button type="button" class="btn btn-outline-dark botao-personalizado">L</button>
+                <button type="button" class="btn btn-outline-dark botao-personalizado">XL</button>
+                <!-- Tamanhos fim -->
+
+                <div class="pt-2">
+                  <a href="{% url 'subtotal'  %}" type="submmit" class="btn btn-primary">Buy now</a>
+                  <a href="#" type="submmit" class="btn btn-secondary">Add to cart</a>
+                </div>
+              </form>
             </div>
+            <p class="card-text pt-5">{{ info.details }}</p>
           </div>
         </div>
       </div>
@@ -65,7 +77,7 @@
         <div class="card bg-light">
           <div class="card-body">
             <h5 class="card-title">Comments</h5>
-            <p class="card-text text-center">This product does not have any comment yet</p>
+            <p class="card-text text-center">This product has no comments yet</p>
           </div>
         </div>
       </div>
