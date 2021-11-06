@@ -1,6 +1,7 @@
 from typing import ContextManager
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Product
+from .forms import ClotheForm
 
 
 def index(request):
@@ -22,12 +23,19 @@ def product(request, product_id):
     """Página do produto"""
     product_info = Product.objects.get(id=product_id)
 
-    if request.method != 'POST':
-        pass
+    if request.method == 'POST':
+        form = ClotheForm(request.POST)
+        if form.is_valid():
+            return redirect('/subtotal/')
     else:
-        pass
+        form = ClotheForm()
+
     page_name = 'Produto'
-    context = {'page_name': page_name, 'info': product_info}
+    context = {'page_name': page_name,
+               'info': product_info,
+               'form': form,
+               'sub_category': str(product_info.sub_category),
+               }
     return render(request, 'products/product.html', context)
 
 
@@ -38,5 +46,5 @@ def subtotal(request):
 
 
 def myproducts(request):
-    """Refere-se ao chamado 'carrinho'"""
+    """Carrinho"""
     pass
