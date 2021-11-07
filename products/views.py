@@ -11,11 +11,12 @@ def index(request):
     return render(request, 'products/index.html', context)
 
 
-def products(request):
+def products(request, category_id):
     """Todos os produtos"""
     products = Product.objects.all()
     page_name = 'Todos os produtos'
-    context = {'page_name': page_name, 'products': products}
+    context = {'page_name': page_name,
+               'products': products, 'category_id': category_id}
     return render(request, 'products/products.html', context)
 
 
