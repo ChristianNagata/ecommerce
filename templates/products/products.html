@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center">
     {% for product in products %}
-        <div class="card card-produto-largura p-0 m-4 col-12 col-md-3 bg-light shadow">
+        <div class="card card-produto-largura p-0 m-4 col-12 col-md-3 bg-light shadow zoom">
         <a href="{% url 'product' product.id %}"><img src="{{ product.image.url }}" class="card-img-top card-posicao-imagem1" alt="..."></a>
             <div class="card-body">
                 <a href="{% url 'product' product.id %}" class="link-personalizado"><h4 class="card-title">{{ product.name }}</h4></a>
