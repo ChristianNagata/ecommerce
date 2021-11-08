@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from e_commerce.settings import LOGOUT_REDIRECT_URL
+from products.models import Product
 
 
 def login_view(request):
@@ -31,3 +32,18 @@ def register(request):
 
     context = {'form': form}
     return render(request, 'registration/register.html', context)
+
+
+def cart(request):
+
+    if request.user.is_authenticated:
+        id = request.user.id
+        products = Product.objects.all()
+
+        context = {
+            'products': products
+        }
+
+        return render(request, 'usuarios/subtotal.html', context)
+    else:
+        return redirect('index')

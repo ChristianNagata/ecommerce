@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.base import Model
 from django.db.models.deletion import CASCADE
 from django.db.models.fields.related import ForeignKey
+from .forms import ClotheForm
 
 
 class Category(models.Model):
