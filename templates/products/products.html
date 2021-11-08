@@ -1,6 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block header %}
+    <div class="container">
+        {% if category_id == 13 %}
+        <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/static/products/img/image-banner1.jpg" class="d-block w-100 banner-imagem1" alt="...">
+            </div>
+            </div>
+        </div>
+        {% elif category_id == 14 %}
+        <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/static/products/img/image-banner2.jpg" class="d-block w-100 banner-imagem2" alt="...">
+            </div>
+            </div>
+        </div>
+        {% elif category_id == 15 %}
+        <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/static/products/img/image-banner3.jpg" class="d-block w-100 banner-imagem3" alt="...">
+            </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock header %}
+
 {% block content %}
 <!-- Cards começo -->
 <div class="container">
@@ -14,7 +44,7 @@
                 <p class="">category: {{ product.category }} > {{ product.sub_category }}</p>
                 <p class="card-text">$ {{ product.price|stringformat:".2f" }}</p>
                 <a href="{% url 'product' product.id %}" class="btn btn-primary">Buy product</a>
-                <a href="#" class="btn btn-secondary">Add to cart</a>
+                <a href="{% url 'product' product.id %}" class="btn btn-secondary">Add to cart</a>
             </div>
         </div>
     {% endif %}

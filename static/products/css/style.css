@@ -52,6 +52,27 @@
 
 /* usado no modal do produto */
 
+.banner-imagem1 {
+    object-fit: cover;
+    object-position: 0% 48%;
+    height: 100px;
+    filter: brightness(40%);
+}
+
+.banner-imagem2 {
+    object-fit: cover;
+    object-position: 0% 90%;
+    height: 100px;
+    filter: brightness(40%);
+}
+
+.banner-imagem3 {
+    object-fit: cover;
+    object-position: 0% 69%;
+    height: 100px;
+    filter: brightness(40%);
+}
+
 .link-personalizado {
     text-decoration: none;
     color: inherit;
