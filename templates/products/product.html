@@ -17,12 +17,12 @@
 
             <div class="form-group pt-1" role="group" aria-label="Basic example">
               <form id='product-resume' method="post" action="{% url 'subtotal' %}" class="form">
+
                 {% if sub_category == 'clothes' %}
                 {% csrf_token %}
-                <!-- Tamanhos -->
-                {{ form }}
-                <!-- Tamanhos fim -->
+                {{ form }} <!-- Tamanhos -->
                 {% endif %}
+                
                 <div class="pt-1">
                   <input type="submit" class="btn btn-primary" value="Buy now">
                   <input type="button" class="btn btn-secondary" value="Add to cart">
