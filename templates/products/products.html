@@ -3,7 +3,7 @@
 
 {% block header %}
         {% if category_id == 13 %}
-        <div id="carouselExampleSlidesOnly" class="carousel " data-ride="carousel">
+        <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
             <div class="carousel-inner" style="position: absolute;">
                 <div class="carousel-item active">
                     <img src="/static/products/img/image-banner1.jpg" class="d-block w-100 banner-imagem1 rounded-bottom" alt="...">
@@ -36,13 +36,13 @@
     {% for product in products %}
     {% if product.category.id == category_id %}
         <div class="card card-produto-largura p-1 m-4 col-12 col-md-3 shadow zoom">
-        <a href="{% url 'product' product.id %}"><img src="{{ product.image.url }}" class="card-img-top card-posicao-imagem1 rounded-bottom" alt="..."></a>
+        <a href="{% url 'product' product.category.id product.id %}"><img src="{{ product.image.url }}" class="card-img-top card-posicao-imagem1 rounded-bottom" alt="..."></a>
             <div class="card-body">
-                <a href="{% url 'product' product.id %}" class="link-personalizado"><h4 class="card-title">{{ product.name }}</h4></a>
+                <a href="{% url 'product' product.category.id product.id %}" class="link-personalizado"><h4 class="card-title">{{ product.name }}</h4></a>
                 <p class="">category: {{ product.category }} > {{ product.sub_category }}</p>
                 <p class="card-text">$ {{ product.price|stringformat:".2f" }}</p>
-                <a href="{% url 'product' product.id %}" class="btn btn-primary">Buy product</a>
-                <a href="{% url 'product' product.id %}" class="btn btn-secondary">Add to cart</a>
+                <a href="{% url 'product' product.category.id product.id %}" class="btn btn-primary">Buy product</a>
+                <a href="{% url 'product' product.category.id product.id %}" class="btn btn-secondary">Add to cart</a>
             </div>
         </div>
     {% endif %}

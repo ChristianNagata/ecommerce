@@ -8,43 +8,49 @@
       <div class="carousel-item active">
         <img src="{% static 'products/img/imagem1-carousel.jpg' %}" class="d-block w-100 imagem-carrossel" alt="...">
         <div class="carousel-caption d-none d-md-block h-50">
-          <h1 class="texto-cor-especial fonte-especial texto-opacidade display-2">FIND A WAY,</h1>
+          <h1 class="texto-cor-especial fonte-especial texto-opacidade display-2 nao-selecionavel">FIND A WAY,</h1>
         </div>
       </div>
       <div class="carousel-item">
         <img src="{% static 'products/img/imagem2-carousel.jpg' %}" class="d-block w-100 imagem-carrossel" alt="...">
         <div class="carousel-caption d-none d-md-block h-50">
-          <h1 class="texto-cor-especial fonte-especial texto-opacidade display-2">NOT AN EXCUSE.</h1>
+          <h1 class="texto-cor-especial fonte-especial texto-opacidade display-2 nao-selecionavel">NOT AN EXCUSE.</h1>
         </div>
       </div>
     </div>
 </div>
 <!-- Carrossel fim -->
+{% endblock header %}
 
+{% block content %}
 <!-- Categorias começo -->
-<div class="row justify-content-center bg-light">
+<div class="container-fluid">
+  <div class="row justify-content-center bg-light">
 
-  <div class="card card-largura card-estilo mt-5 p-0 m-4 col-12 col-md-3 shadow rounded zoom">
-    <a href="{% url 'products' 13 %}"><img src="{% static 'products/img/imagem1-card.jpg' %}" class="card-img-top card-posicao-imagem1"></a>
-    <div class="card-body">
-      <p class="card-text">The man collection represents those who take their training seriously, maintaining discipline and focus as soldiers!</p>
+    <div class="card card-largura card-estilo p-0 m-3 col-12 col-md-3 shadow rounded zoom">
+      <a href="{% url 'products' 13 %}"><img alt="Man" src="{% static 'products/img/imagem1-card.jpg' %}" class="card-img-top card-posicao-imagem1"></a>
+      <div class="card-body">
+        <p class="card-text">The man collection represents those who take their training seriously, maintaining discipline and focus as soldiers!</p>
+      </div>
     </div>
-  </div>
-  
-  <div class="card card-largura card-estilo mt-5 p-0 m-4 col-12 col-md-3 shadow rounded zoom">
-    <a href="{% url 'products' 14 %}"><img src="{% static 'products/img/imagem2-card.jpg' %}" class="card-img-top card-posicao-imagem1"></a>
-    <div class="card-body">
-      <p class="card-text">The woman collection was developed with the aim of making women's lives more practical. Where we can offer a versatile product.</p>
+    
+    <div class="card card-largura card-estilo p-0 m-3 col-12 col-md-3 shadow rounded zoom">
+      <a href="{% url 'products' 14 %}"><img alt="Woman" src="{% static 'products/img/imagem2-card.jpg' %}" class="card-img-top card-posicao-imagem1"></a>
+      <div class="card-body">
+        <p class="card-text">The woman collection was developed with the aim of making women's lives more practical. Where we can offer a versatile product.</p>
+      </div>
     </div>
-  </div>
 
-  <div class="card card-largura card-estilo mt-5 p-0 m-4 col-12 col-md-3 shadow rounded zoom">
-    <a href="{% url 'products' 15 %}"><img src="{% static 'products/img/imagem3-card.jpg' %}" class="card-img-top card-posicao-imagem1"></a>
-    <div class="card-body">
-      <p class="card-text">The best supplements you need to complement your diet.</p>
+    <div class="card card-largura card-estilo p-0 m-3 col-12 col-md-3 shadow rounded zoom">
+      <a href="{% url 'products' 15 %}"><img alt="Supplements" src="{% static 'products/img/imagem3-card.jpg' %}" class="card-img-top card-posicao-imagem1"></a>
+      <div class="card-body">
+        <p class="card-text">The best supplements you need to complement your diet.</p>
+      </div>
     </div>
-  </div>
 
+  </div>
 </div>
 <!-- Categorias fim -->
-{% endblock header %}
+
+
+{% endblock content %}

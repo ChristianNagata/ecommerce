@@ -35,7 +35,7 @@
     <div class="card mt-3 bg-light">
       <div class="row no-gutters">
         <div class="col-md-5">
-          <a href="" data-toggle="modal" data-target="#image-zoom"><img src="{{ info.image.url }}" class="posicao-imagem m-2"></a>
+          <a href="" data-toggle="modal" data-target="#image-zoom"><img src="{{ info.image.url }}" class="posicao-imagem m-3 zoom rounded"></a>
         </div>
         <div class="col-md-7">
           <div class="card-body">
@@ -44,12 +44,10 @@
 
             <div class="form-group pt-1" role="group" aria-label="Basic example">
               <form id='product-resume' method="post" action="{% url 'subtotal' %}" class="form">
-
-                {% if sub_category == 'clothes' %}
                 {% csrf_token %}
+                {% if sub_category == 'clothes' %}
                 {{ form }} <!-- Tamanhos -->
                 {% endif %}
-                
                 <div class="pt-1">
                   <input type="submit" class="btn btn-primary" value="Buy now">
                   <input type="button" class="btn btn-secondary" value="Add to cart">
@@ -74,26 +72,16 @@
       <div class="col-6">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title">Other products</h5>
+            <h5 class="card-title">Recommended for you</h5>
             <div class="card-group">
-              <div class="card">
-                <img src="{{ info.image.url }}" class="card-img-top posicao-imagem2" alt="...">
+              {% for product in recommended %}
+              <div class="card m-2 zoom rounded shadow">
+                <a href="{% url 'product' product.category.id product.id %}"><img src="{{ product.image.url }}" class="card-img-top posicao-imagem2 rounded" alt="..."></a>
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
+                  <a href="{% url 'product' product.category.id product.id %}" class="link-personalizado"><p class="card-title">{{ product.name }}</p></a>
                 </div>
               </div>
-              <div class="card">
-                <img src="{{ info.image.url }}" class="card-img-top posicao-imagem2" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                </div>
-              </div>
-              <div class="card">
-                <img src="{{ info.image.url }}" class="card-img-top posicao-imagem2" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                </div>
-              </div>
+              {% endfor %}
             </div>
           </div>
         </div>
