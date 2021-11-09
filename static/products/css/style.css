@@ -9,11 +9,7 @@
 }
 
 .fonte-especial {
-    font-family: 'Bebas Neue', cursive;
-
-    font-family: 'Graduate', cursive;
-
-    font-family: 'Staatliches', cursive;
+    font-family: 'Anton', sans-serif;
 }
 
 .card-largura {
@@ -73,21 +69,21 @@
 .banner-imagem1 {
     object-fit: cover;
     object-position: 0% 48%;
-    height: 100px;
+    height: 200px;
     filter: brightness(40%);
 }
 
 .banner-imagem2 {
     object-fit: cover;
     object-position: 0% 90%;
-    height: 100px;
+    height: 200px;
     filter: brightness(40%);
 }
 
 .banner-imagem3 {
     object-fit: cover;
     object-position: 0% 69%;
-    height: 100px;
+    height: 200px;
     filter: brightness(40%);
 }
 

@@ -2,43 +2,41 @@
 {% load static %}
 
 {% block header %}
-    <div class="container">
         {% if category_id == 13 %}
-        <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
-            <div class="carousel-inner">
+        <div id="carouselExampleSlidesOnly" class="carousel " data-ride="carousel">
+            <div class="carousel-inner" style="position: absolute;">
                 <div class="carousel-item active">
-                    <img src="/static/products/img/image-banner1.jpg" class="d-block w-100 banner-imagem1" alt="...">
+                    <img src="/static/products/img/image-banner1.jpg" class="d-block w-100 banner-imagem1 rounded-bottom" alt="...">
                 </div>
             </div>
         </div>
         {% elif category_id == 14 %}
         <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="position: absolute;">
                 <div class="carousel-item active">
-                    <img src="/static/products/img/image-banner2.jpg" class="d-block w-100 banner-imagem2" alt="...">
+                    <img src="/static/products/img/image-banner2.jpg" class="d-block w-100 banner-imagem2 rounded-bottom" alt="...">
                 </div>
             </div>
         </div>
         {% elif category_id == 15 %}
         <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="position: absolute;">
                 <div class="carousel-item active">
-                    <img src="/static/products/img/image-banner3.jpg" class="d-block w-100 banner-imagem3" alt="...">
+                    <img src="/static/products/img/image-banner3.jpg" class="d-block w-100 banner-imagem3 rounded-bottom" alt="...">
                 </div>
             </div>
         </div>
         {% endif %}
-    </div>
 {% endblock header %}
 
 {% block content %}
 <!-- Cards começo -->
-<div class="container">
+<div class="container pt-2">
     <div class="row justify-content-center">
     {% for product in products %}
     {% if product.category.id == category_id %}
-        <div class="card card-produto-largura p-0 m-4 col-12 col-md-3 bg-light shadow zoom">
-        <a href="{% url 'product' product.id %}"><img src="{{ product.image.url }}" class="card-img-top card-posicao-imagem1" alt="..."></a>
+        <div class="card card-produto-largura p-1 m-4 col-12 col-md-3 shadow zoom">
+        <a href="{% url 'product' product.id %}"><img src="{{ product.image.url }}" class="card-img-top card-posicao-imagem1 rounded-bottom" alt="..."></a>
             <div class="card-body">
                 <a href="{% url 'product' product.id %}" class="link-personalizado"><h4 class="card-title">{{ product.name }}</h4></a>
                 <p class="">category: {{ product.category }} > {{ product.sub_category }}</p>

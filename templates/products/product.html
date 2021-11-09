@@ -1,11 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block header %}
+  {% if info.category.id == 13 %}
+  <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
+      <div class="carousel-inner" style="position: absolute;">
+          <div class="carousel-item active">
+              <img src="/static/products/img/image-banner1.jpg" class="d-block w-100 banner-imagem1 rounded-bottom" alt="...">
+          </div>
+      </div>
+  </div>
+  {% elif info.category.id == 14 %}
+  <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
+      <div class="carousel-inner" style="position: absolute;">
+          <div class="carousel-item active">
+              <img src="/static/products/img/image-banner2.jpg" class="d-block w-100 banner-imagem2 rounded-bottom" alt="...">
+          </div>
+      </div>
+  </div>
+  {% elif info.category.id == 15 %}
+  <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
+      <div class="carousel-inner" style="position: absolute;">
+          <div class="carousel-item active">
+              <img src="/static/products/img/image-banner3.jpg" class="d-block w-100 banner-imagem3 rounded-bottom" alt="...">
+          </div>
+      </div>
+  </div>
+  {% endif %}
+{% endblock header %}
 
 {% block content %}
-<div class="container">
+<div class="container pt-2" style="position: relative;">
   <div class="row justify-content-center">
-    <div class="card mt-4 bg-light">
+    <div class="card mt-3 bg-light">
       <div class="row no-gutters">
         <div class="col-md-5">
           <a href="" data-toggle="modal" data-target="#image-zoom"><img src="{{ info.image.url }}" class="posicao-imagem m-2"></a>
