@@ -6,5 +6,5 @@ urlpatterns = [
     path('products/<int:category_id>/', views.products, name='products'),
     path('product/<int:category_id>/<int:product_id>/',
          views.product, name='product'),
-    path('subtotal/', views.subtotal, name='subtotal'),
+    path('subtotal//<int:product_id>/', views.subtotal, name='subtotal'),
 ]

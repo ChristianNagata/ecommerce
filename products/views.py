@@ -47,7 +47,11 @@ def product(request, category_id, product_id):
     return render(request, 'products/product.html', context)
 
 
-def subtotal(request):
+def subtotal(request, product_id):
     """Página de resumo da compra"""
-    context = {'title': 'Página de resumo'}
+    cart = Product.objects.all().filter(id=product_id)
+    context = {
+        'title': 'Página de resumo',
+        'cart': cart,
+    }
     return render(request, 'products/subtotal.html', context)

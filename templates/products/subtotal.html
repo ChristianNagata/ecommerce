@@ -4,8 +4,21 @@
 
 {% block content %}
 
-{% for product in products %}
-<p>{{ product }}</p>
-{% endfor %}
+<!-- Cards começo -->
+<div class="container pt-2">
+    <div class="row justify-content-center">
+    {% for product in cart %}
+        <div class="card card-produto-largura p-1 m-4 col-12 col-md-3 shadow zoom">
+        <img src="{{ product.image.url }}" class="card-img-top card-posicao-imagem1 rounded-bottom" alt="...">
+            <div class="card-body">
+                <h4 class="card-title">{{ product.name }}</h4>
+                <p class="">category: {{ product.category }} > {{ product.sub_category }}</p>
+                <p class="card-text">$ {{ product.price|stringformat:".2f" }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    </div>  
+</div>
+<!-- Cards final -->
 
 {% endblock content %}
