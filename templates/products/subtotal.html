@@ -2,22 +2,47 @@
 {% load static %}
 
 
+{% block header %}
+  <div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
+      <div class="carousel-inner" style="position: absolute;">
+          <div class="carousel-item active">
+              <img src="/static/products/img/image-banner4.jpg" class="d-block w-100 banner-imagem1 rounded-bottom" alt="...">
+          </div>
+      </div>
+  </div>
+{% endblock header %}
+
 {% block content %}
 
 <!-- Cards começo -->
-<div class="container pt-2">
+<div class="container pt-5">
     <div class="row justify-content-center">
     {% for product in cart %}
-        <div class="card card-produto-largura p-1 m-4 col-12 col-md-3 shadow zoom">
-        <img src="{{ product.image.url }}" class="card-img-top card-posicao-imagem1 rounded-bottom" alt="...">
+      <div class="card col-8">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="{{ product.image.url }}" class="m-2 card-posicao-imagem-subtotal rounded">
+          </div>
+          <div class="col-md-8">
             <div class="card-body">
-                <h4 class="card-title">{{ product.name }}</h4>
-                <p class="">category: {{ product.category }} > {{ product.sub_category }}</p>
-                <p class="card-text">$ {{ product.price|stringformat:".2f" }}</p>
+              <h3 class="card-title">{{ product.name }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+        <div class="card col-3"> 
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Discounts: $ 0.00</li>
+                <li class="list-group-item">Free shipping</li>
+                <li class="list-group-item"><h5>Subtotal: $ {{ product.price|stringformat:".2f" }}</h5></li>
+            </ul>
+            <div class="card-body">
+            <button type="submit" class="btn btn-primary">Checkout</button>
             </div>
         </div>
-    {% endfor %}
-    </div>  
+        {% endfor %}
+    </div>
 </div>
 <!-- Cards final -->
 

@@ -3,6 +3,7 @@ from django.shortcuts import redirect, render
 from .models import Product
 from .forms import ClotheForm
 from random import sample, randint
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -47,6 +48,7 @@ def product(request, category_id, product_id):
     return render(request, 'products/product.html', context)
 
 
+@login_required
 def subtotal(request, product_id):
     """Página de resumo da compra"""
     cart = Product.objects.all().filter(id=product_id)

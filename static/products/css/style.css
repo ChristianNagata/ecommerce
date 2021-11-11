@@ -100,6 +100,13 @@
     width: 44px;
 }
 
+.card-posicao-imagem-subtotal {
+    object-fit: cover;
+    object-position: 0 50%;
+    height: 300px;
+    width: 240px;
+}
+
 .nao-selecionavel {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
