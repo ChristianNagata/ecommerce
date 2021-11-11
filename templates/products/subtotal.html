@@ -33,12 +33,12 @@
     
         <div class="card col-3"> 
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Discounts: $ 0.00</li>
                 <li class="list-group-item">Free shipping</li>
+                <li class="list-group-item">Discounts: $ 0.00</li>
                 <li class="list-group-item"><h5>Subtotal: $ {{ product.price|stringformat:".2f" }}</h5></li>
             </ul>
             <div class="card-body">
-            <button type="submit" class="btn btn-primary">Checkout</button>
+            <button type="submit" class="btn btn-primary" disabled>Checkout</button>
             </div>
         </div>
         {% endfor %}

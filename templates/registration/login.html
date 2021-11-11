@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block header %}
+<div id="carouselExampleSlidesOnly" class="carousel" data-ride="carousel">
+  <div class="carousel-inner" style="position: absolute;">
+      <div class="carousel-item active">
+          <img src="/static/products/img/image-banner5.jpg" class="d-block w-100 banner-imagem1 rounded-bottom" alt="...">
+      </div>
+  </div>
+</div>
+{% endblock header %}
+
 {% block content %}
 
 <section class="vh-100 gradient-custom bg-light">
-  <div class="container pt-5 h-100">
+  <div class="container h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white shadow" style="border-radius: 1rem;">
