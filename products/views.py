@@ -1,5 +1,8 @@
 from typing import ContextManager
 from django.shortcuts import redirect, render
+
+from products.serializer import ProductSerializer
+from rest_framework import viewsets
 from .models import Product
 from .forms import ClotheForm
 from random import sample, randint
@@ -57,3 +60,9 @@ def subtotal(request, product_id):
         'cart': cart,
     }
     return render(request, 'products/subtotal.html', context)
+
+
+class ProductViewSet(viewsets.ModelViewSet):
+    """Define o comportamento da view da API"""
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer

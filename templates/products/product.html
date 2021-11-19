@@ -44,6 +44,7 @@
 
             <div class="form-group pt-1" role="group" aria-label="Basic example">
               <form id='product-resume' method="post" action="{% url 'subtotal' info.id %}" class="form">
+                <input type="hidden" value="{{ info }}">
                 {% csrf_token %}
                 {% if sub_category == 'clothes' %}
                   {{ form }} <!-- Tamanhos -->
@@ -75,7 +76,7 @@
             <h5 class="card-title">Recommended for you</h5>
             <div class="card-group">
               {% for product in recommended %}
-              <div class="card m-2 zoom rounded shadow">
+              <div class="card m-2 zoom rounded bg-light shadow">
                 <a href="{% url 'product' product.category.id product.id %}"><img src="{{ product.image.url }}" class="card-img-top posicao-imagem2 rounded" alt="..."></a>
                 <div class="card-body">
                   <a href="{% url 'product' product.category.id product.id %}" class="link-personalizado"><p class="card-title">{{ product.name }}</p></a>
