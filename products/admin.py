@@ -15,6 +15,20 @@ class Products(admin.ModelAdmin):
     list_per_page = 10
 
 
+class Categories(admin.ModelAdmin):
+    list_display = ('id', 'category')
+    list_display_links = ('id', 'category')
+    search_fields = ('id', 'category')
+    list_per_page = 10
+
+
+class SubCategories(admin.ModelAdmin):
+    list_display = ('id', 'sub_category')
+    list_display_links = ('id', 'sub_category')
+    search_fields = ('id', 'sub_category')
+    list_per_page = 10
+
+
 admin.site.register(Product, Products)
-admin.site.register(Category)
-admin.site.register(SubCategory)
+admin.site.register(Category, Categories)
+admin.site.register(SubCategory, SubCategories)

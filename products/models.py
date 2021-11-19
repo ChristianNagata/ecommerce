@@ -1,8 +1,5 @@
 from django.db import models
-from django.db.models.base import Model
 from django.db.models.deletion import CASCADE
-from django.db.models.fields.related import ForeignKey
-from .forms import ClotheForm
 
 
 class Category(models.Model):
@@ -21,7 +18,7 @@ class SubCategory(models.Model):
     sub_category = models.CharField(max_length=30)
 
     class Meta:
-        verbose_name_plural = 'sub-categories'
+        verbose_name_plural = 'subcategories'
 
     def __str__(self) -> str:
         return self.sub_category

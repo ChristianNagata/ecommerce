@@ -4,6 +4,8 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from e_commerce.settings import LOGOUT_REDIRECT_URL
 from rest_framework import viewsets
+from rest_framework.authentication import BaseAuthentication
+from rest_framework.permissions import IsAuthenticated
 from user.serializer import UserSerializer
 
 
@@ -40,3 +42,5 @@ class UserViewSet(viewsets.ModelViewSet):
     """Define o comportamento da view da API"""
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    #authentication_classes = [BaseAuthentication]
+    #permission_classes = [IsAuthenticated]

@@ -1,11 +1,13 @@
-from typing import ContextManager
 from django.shortcuts import redirect, render
-
+from rest_framework import authentication
+from rest_framework import permissions
 from products.serializer import ProductSerializer
 from rest_framework import viewsets
+from rest_framework.authentication import BaseAuthentication
+from rest_framework.permissions import IsAuthenticated
 from .models import Product
 from .forms import ClotheForm
-from random import sample, randint
+from random import randint
 from django.contrib.auth.decorators import login_required
 
 
@@ -66,3 +68,5 @@ class ProductViewSet(viewsets.ModelViewSet):
     """Define o comportamento da view da API"""
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    #authentication_classes = [BaseAuthentication]
+    #permission_classes = [IsAuthenticated]
