@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from e_commerce.settings import LOGOUT_REDIRECT_URL
-from products.models import Product
+from rest_framework import viewsets
+from user.serializer import UserSerializer
 
 
 def login_view(request):
@@ -33,3 +34,9 @@ def register(request):
 
     context = {'form': form}
     return render(request, 'registration/register.html', context)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """Define o comportamento da view da API"""
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
