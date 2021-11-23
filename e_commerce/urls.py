@@ -9,8 +9,8 @@ from rest_framework import routers
 
 
 router = routers.DefaultRouter()
-router.register(r'products-vs', ProductViewSet)
-router.register(r'users-vs', UserViewSet)
+router.register(r'products', ProductViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -10,7 +10,9 @@ class ProductSerializer(serializers.ModelSerializer):
             'name',
             'price',
             'category',
-            'sub_category'
+            'sub_category',
+            'image',
+            'details'
         )
 
     def validate_name(self, name):

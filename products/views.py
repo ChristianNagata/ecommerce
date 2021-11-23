@@ -1,19 +1,20 @@
-from django.shortcuts import redirect, render
-from rest_framework import authentication
-from rest_framework import permissions
-from products.serializer import ProductSerializer
-from rest_framework import viewsets
+from rest_framework import viewsets, filters, permissions, authentication
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.permissions import IsAuthenticated
+from django_filters.rest_framework import DjangoFilterBackend
+
+from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
+from products.serializer import ProductSerializer
 from .models import Product
 from .forms import ClotheForm
 from random import randint
-from django.contrib.auth.decorators import login_required
 
 
 def index(request):
     """Página inicial com todos os produtos"""
-    page_name = 'Página inicial'
+    page_name = 'Home'
+
     context = {'page_name': page_name}
     return render(request, 'products/index.html', context)
 
@@ -21,7 +22,8 @@ def index(request):
 def products(request, category_id):
     """Todos os produtos"""
     products = Product.objects.all()
-    page_name = 'Todos os produtos'
+    page_name = 'Products'
+
     context = {'page_name': page_name,
                'products': products, 'category_id': category_id}
     return render(request, 'products/products.html', context)
@@ -30,7 +32,9 @@ def products(request, category_id):
 def product(request, category_id, product_id):
     """Página do produto"""
     product_info = Product.objects.get(id=product_id)
+    page_name = 'Product'
 
+    # Faz a seleção de produtos recomendados
     count = Product.objects.filter(category_id=category_id).count()
     index = randint(3, count)
     recommended = Product.objects.all().filter(
@@ -43,13 +47,13 @@ def product(request, category_id, product_id):
     else:
         form = ClotheForm()
 
-    page_name = 'Produto'
-    context = {'page_name': page_name,
-               'info': product_info,
-               'form': form,
-               'sub_category': str(product_info.sub_category),
-               'recommended': recommended,
-               }
+    context = {
+        'page_name': page_name,
+        'info': product_info,
+        'form': form,
+        'sub_category': str(product_info.sub_category),
+        'recommended': recommended,
+    }
     return render(request, 'products/product.html', context)
 
 
@@ -57,9 +61,12 @@ def product(request, category_id, product_id):
 def subtotal(request, product_id):
     """Página de resumo da compra"""
     cart = Product.objects.all().filter(id=product_id)
+    page_name = 'Subtotal'
+
     context = {
         'title': 'Página de resumo',
         'cart': cart,
+        'page_name': page_name
     }
     return render(request, 'products/subtotal.html', context)
 
@@ -70,3 +77,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     serializer_class = ProductSerializer
     #authentication_classes = [BaseAuthentication]
     #permission_classes = [IsAuthenticated]
+    filter_backends = [DjangoFilterBackend,
+                       filters.OrderingFilter, filters.SearchFilter]
+    ordering_fields = ['name', ]
+    search_fields = ['name', ]
