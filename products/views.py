@@ -1,10 +1,11 @@
-from rest_framework import viewsets, filters, permissions, authentication
+from rest_framework import serializers, status, viewsets, filters, permissions, authentication
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from rest_framework.response import Response
 from products.serializer import ProductSerializer
 from .models import Product
 from .forms import ClotheForm
@@ -75,9 +76,17 @@ class ProductViewSet(viewsets.ModelViewSet):
     """Define o comportamento da view da API"""
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    #authentication_classes = [BaseAuthentication]
-    #permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend,
                        filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['name', ]
     search_fields = ['name', ]
+
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            response = Response(
+                serializer.data, status=status.HTTP_201_CREATED)
+            id = str(serializer.data['id'])
+            response['Location'] = request.build_absolute_uri() + id
+            return response

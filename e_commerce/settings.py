@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'user',
     'rest_framework',
     'django_filters',
+    'admin_honeypot',
+    'drf_yasg'
 ]
 
 MIDDLEWARE = [
@@ -55,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'e_commerce.urls'
@@ -84,7 +87,7 @@ WSGI_APPLICATION = 'e_commerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
     }
 }
 
@@ -149,11 +152,32 @@ LOGOUT_REDIRECT_URL = '/user/login/'
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ],
+
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+
     'PAGE_SIZE': 10,
+
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+    ],
+
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '2/day',
+    },
+
+    # 'DEFAULT_PARSER_CLASSES': [
+    #    'rest_framework.parser.JSONParser',
+    #    'rest_framework_xml.parsers.XMLParser',
+    # ],
+
+    # 'DEFAULT_RENDERER_CLASSES': [
+    #    'rest_framework.renders.JSONRenderer',
+    #    'rest_framework_xml.renderers.XMLRenderer',
+    # ],
 }
 
 django_heroku.settings(locals())
+
+LOCALE_PAHTS = (
+    os.path.join(BASE_DIR, 'locale/')
+)

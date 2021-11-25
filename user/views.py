@@ -2,11 +2,17 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from e_commerce.settings import LOGOUT_REDIRECT_URL
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+
 from rest_framework import viewsets
 from rest_framework.authentication import BaseAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from products.views import ProductViewSet
+
 from user.serializer import UserSerializer
+from e_commerce.settings import LOGOUT_REDIRECT_URL
 
 
 def login_view(request):
@@ -42,5 +48,7 @@ class UserViewSet(viewsets.ModelViewSet):
     """Define o comportamento da view da API"""
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    #authentication_classes = [BaseAuthentication]
-    #permission_classes = [IsAuthenticated]
+
+    # @method_decorator(cache_page(30))
+    # def dispatch(self, *args, **kwargs):
+    #    return super(ProductViewSet, self).dispatch(*args, **kwargs)
